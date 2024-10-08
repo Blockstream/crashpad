@@ -424,8 +424,11 @@ bool PEImageReader::ImageDataDirectoryEntryT(
     return false;
   }
 
+  const auto o0 = offsetof(decltype(nt_headers.OptionalHeader), DataDirectory[0]);
+  const auto o1 = offsetof(decltype(nt_headers.OptionalHeader), DataDirectory[1]);
+
   if (nt_headers.FileHeader.SizeOfOptionalHeader <
-          offsetof(decltype(nt_headers.OptionalHeader), DataDirectory[index]) +
+          o0 + index * (o1 - o0) +
               sizeof(nt_headers.OptionalHeader.DataDirectory[index]) ||
       nt_headers.OptionalHeader.NumberOfRvaAndSizes <= index) {
     return false;
