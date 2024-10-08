@@ -15,6 +15,7 @@
 #ifndef CRASHPAD_UTIL_FILE_FILESYSTEM_H_
 #define CRASHPAD_UTIL_FILE_FILESYSTEM_H_
 
+#include <stdint.h>
 #include <time.h>
 
 #include "base/files/file_path.h"
