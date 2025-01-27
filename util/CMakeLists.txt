@@ -250,6 +250,7 @@ endif()
 if(LINUX OR ANDROID)
     if (LINUX)
         if(NOT TARGET CURL::libcurl) # Some other lib might bring libcurl already
+            find_package(Threads REQUIRED)
             find_package(CURL REQUIRED)
         endif()
 
